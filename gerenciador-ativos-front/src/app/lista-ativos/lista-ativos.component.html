@@ -1,0 +1,25 @@
+<section class="container">
+  <h2>Ativos</h2>
+
+  <div class="mb-3">
+    <label for="nomePesquisa" class="form-label">Pesquisar:</label>
+    <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um nome para pesquisar...">
+  </div>
+  <p>{{nomePesquisa}}</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOME</th>
+        <th>TAG ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ativo of (listaAtivos | filter: 'nome' : nomePesquisa )">
+        <td>{{ativo.id}}</td>
+        <td>{{ativo.nome}}</td>
+        <td>{{ativo.id_tag}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
