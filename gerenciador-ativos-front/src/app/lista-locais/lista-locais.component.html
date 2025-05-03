@@ -1,5 +1,5 @@
 <section class="container">
-  <h2>Ativos</h2>
+  <h2>Locais</h2>
 
   <div class="mb-3">
     <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um nome para pesquisar...">
@@ -14,10 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ativo of (listaAtivos | filter: 'nome' : nomePesquisa )">
-        <td>{{ativo.id}}</td>
-        <td>{{ativo.nome}}</td>
-        <td>{{ativo.id_tag}}</td>
+      <tr *ngFor="let local of (listaLocais | filter: 'nome' : nomePesquisa )">
+        <td>{{local.id}}</td>
+        <td>{{local.nome}}</td>
+        <td>{{local.id_local}}</td>
       </tr>
     </tbody>
   </table>

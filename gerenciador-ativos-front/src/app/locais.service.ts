@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+import { Local } from './local';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LocaisService {
+  private locais: Local[] = [
+    {id: "1", nome: "Recepção", id_local: "local1"},
+    {id: "2", nome: "UTI 1", id_local: "local2"},
+    {id: "3", nome: "UTI 2",id_local: "local3"}
+  ]
+  constructor() { }
+
+  listarLocais = (): Local[] => this.locais;
+}

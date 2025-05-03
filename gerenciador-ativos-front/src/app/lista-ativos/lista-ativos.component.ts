@@ -10,7 +10,7 @@ import { Ativos } from '../ativos';
 })
 export class ListaAtivosComponent {
   nomePesquisa?: string;
-  listaAtivos: Ativos[]
+  listaAtivos:  Ativos[]
   constructor(private gerenciadorService: GerenciadorService){
     this.listaAtivos = gerenciadorService.listarAtivos();
   }

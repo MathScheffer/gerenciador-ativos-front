@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LocalizacoesComponent } from './localizacoes/localizacoes.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
+import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FilterPipe } from './filter.pipe';
     HomeComponent,
     PageNotFoundComponent,
     LocalizacoesComponent,
-    FilterPipe
+    FilterPipe,
+    ListaLocaisComponent
   ],
   imports: [
     BrowserModule,
