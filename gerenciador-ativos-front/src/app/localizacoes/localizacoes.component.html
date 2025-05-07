@@ -3,10 +3,10 @@
 
   <div class="mb-3 row">
     <div class="col-8">
-      <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="col-8 form-control " placeholder="Digite um {{filtroPesquisa}} para pesquisar...">
+      <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um {{filtroPesquisa}} para pesquisar...">
     </div>
     <div class="col-4">
-      <select class="col-4 form-select" [(ngModel)]="filtroPesquisa" name="campoPesquisa" id="campoPesquisa" aria-placeholder="selecione um filtro">
+      <select class="form-select" [(ngModel)]="filtroPesquisa" name="campoPesquisa" id="campoPesquisa" aria-placeholder="selecione um filtro">
         <option value="ativo" selected>Ativo</option>
         <option value="local">Local</option>
         <option value="ultima_localizacao">Última Localização</option>
