@@ -9,12 +9,12 @@ export class GerenciadorService {
     {
       id: 'xpto',
       nome: 'monitor',
-      id_tag: 'blablabla'
+      tag_ativo: 'blablabla'
     },
     {
       id: 'xpto2',
       nome: 'gabinete',
-      id_tag: 'bl123'
+      tag_ativo: 'bl123'
     }
   ]
   constructor() { }

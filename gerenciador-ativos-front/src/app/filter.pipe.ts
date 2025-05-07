@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
       return lista;
     }
     
-    return lista.filter(obj => obj['nome'] ?.toLocaleLowerCase().includes(valor?.toLocaleLowerCase()))
+    return lista.filter(obj => obj[chave] ?.toLocaleLowerCase().includes(valor?.toLocaleLowerCase()))
   }
 
 }

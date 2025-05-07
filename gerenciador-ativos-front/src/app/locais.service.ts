@@ -6,9 +6,9 @@ import { Local } from './local';
 })
 export class LocaisService {
   private locais: Local[] = [
-    {id: "1", nome: "Recepção", id_local: "local1"},
-    {id: "2", nome: "UTI 1", id_local: "local2"},
-    {id: "3", nome: "UTI 2",id_local: "local3"}
+    {id: "1", nome: "Recepção", tag_local: "local1"},
+    {id: "2", nome: "UTI 1", tag_local: "local2"},
+    {id: "3", nome: "UTI 2",tag_local: "local3"}
   ]
   constructor() { }
 

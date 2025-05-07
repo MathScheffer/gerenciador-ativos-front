@@ -1,1 +1,39 @@
-<p>localizacoes works!</p>
+<section class="container">
+  <h2>Locais</h2>
+
+  <div class="mb-3 row">
+    <div class="col-8">
+      <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="col-8 form-control " placeholder="Digite um {{filtroPesquisa}} para pesquisar...">
+    </div>
+    <div class="col-4">
+      <select class="col-4 form-select" [(ngModel)]="filtroPesquisa" name="campoPesquisa" id="campoPesquisa" aria-placeholder="selecione um filtro">
+        <option value="ativo" selected>Ativo</option>
+        <option value="local">Local</option>
+        <option value="ultima_localizacao">Última Localização</option>
+      </select>
+    </div>
+  </div>
+  <p>{{nomePesquisa}}</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ATIVO</th>
+        <th>LOCAL</th>
+        <th>ULTIMA LOCALIZACAO</th>
+        <th>TAG LOCAL</th>
+        <th>TAG ATIVO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let localizacao of (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa )">
+        <td>{{localizacao.id}}</td>
+        <td>{{localizacao.ativo}}</td>
+        <td>{{localizacao.local}}</td>
+        <td>{{localizacao.ultima_localizacao}}</td>
+        <td>{{localizacao.tag_local}}</td>
+        <td>{{localizacao.tag_ativo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
