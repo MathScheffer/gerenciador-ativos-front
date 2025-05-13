@@ -1,0 +1,14 @@
+{
+  "ativos": [
+    {
+      "id": "xpto",
+      "nome": "monitor",
+      "tag_ativo": "blablabla"
+    },
+    {
+      "id": "xpto2",
+      "nome": "gabinete",
+      "tag_ativo": "bl123"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ import { LocalizacoesComponent } from './localizacoes/localizacoes.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
     
     FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
