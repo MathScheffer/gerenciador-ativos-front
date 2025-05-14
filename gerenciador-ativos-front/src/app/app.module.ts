@@ -8,10 +8,13 @@ import { ListaAtivosComponent } from './lista-ativos/lista-ativos.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LocalizacoesComponent } from './localizacoes/localizacoes.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
 import { provideHttpClient } from '@angular/common/http';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { FormLocalComponent } from './form-local/form-local.component';
+import { FormAtivosComponent } from './form-ativos/form-ativos.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { provideHttpClient } from '@angular/common/http';
     PageNotFoundComponent,
     LocalizacoesComponent,
     FilterPipe,
-    ListaLocaisComponent
+    ListaLocaisComponent,
+    CadastroComponent,
+    FormLocalComponent,
+    FormAtivosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [provideHttpClient()],

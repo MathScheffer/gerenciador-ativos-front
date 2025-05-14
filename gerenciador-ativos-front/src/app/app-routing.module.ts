@@ -5,12 +5,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { LocalizacoesComponent } from './localizacoes/localizacoes.component';
 import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { FormAtivosComponent } from './form-ativos/form-ativos.component';
+import { FormLocalComponent } from './form-local/form-local.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'ativos', component:ListaAtivosComponent},
   {path: 'locais', component: ListaLocaisComponent},
   {path:'localizacoes', component: LocalizacoesComponent},
+  {path:'cadastro', component: CadastroComponent, title: 'cadastro', children:[
+    {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo'},
+    {path: 'local', component: FormLocalComponent, title: 'cadastro local'},
+  ]
+  },
   {path:'', redirectTo: 'localizacoes', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];

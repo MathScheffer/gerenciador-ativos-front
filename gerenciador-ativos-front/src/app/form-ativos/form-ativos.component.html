@@ -1,0 +1,28 @@
+<h2>Ativos</h2>
+<div class="container d-flex justify-content-center">
+  <form class="container d-flex justify-content-center flex-column">
+    <div class="mb-3 row">
+      <label class="form-label">
+        Id
+        <input class="form-control" type="text" name="id" [(ngModel)]="ativo.id" />
+      </label>
+    </div>
+    <div class="mb-3 row">
+      <label class="form-label">
+        Nome
+        <input class="form-control" type="text" name="nome" [(ngModel)]="ativo.nome" />
+      </label>
+    </div>
+    <div class="mb-3 row">
+      <label class="form-label">
+        Tag Ativo
+        <input class="form-control" type="text" name="tag_ativo" [(ngModel)]="ativo.tag_ativo" />
+      </label>
+    </div>
+
+    <div class="mb-3 row justify-content-between">
+      <button class="col-5 btn btn-primary me-3" type="submit" (click)="salvar()">Salvar</button>
+      <button class="col-5 btn btn-primary me-3" type="submit" (click)="inicio()">Inicio</button>
+    </div>
+  </form>
+</div>

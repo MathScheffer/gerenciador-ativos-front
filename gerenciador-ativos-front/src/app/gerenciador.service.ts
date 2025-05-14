@@ -32,4 +32,8 @@ export class GerenciadorService {
     console.log(`${this.BASE_API}/ativos`)
     return this.http.get<Ativos[]>(`${this.BASE_API}/ativos`);
   }
+
+  adicionarAtivo = (ativo: Ativos): Observable<Ativos> => {
+    return this.http.post<Ativos>(`${this.BASE_API}/ativos`, ativo, this.httpOptions)
+  }
 }
