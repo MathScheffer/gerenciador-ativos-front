@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 export class GerenciadorService {
   private ativos: Ativos[] = [
     {
-      id: 'xpto',
+      id: 1,
       nome: 'monitor',
       tag_ativo: 'blablabla'
     },
     {
-      id: 'xpto2',
+      id: 2,
       nome: 'gabinete',
       tag_ativo: 'bl123'
     }
@@ -34,6 +34,7 @@ export class GerenciadorService {
   }
 
   adicionarAtivo = (ativo: Ativos): Observable<Ativos> => {
+
     return this.http.post<Ativos>(`${this.BASE_API}/ativos`, ativo, this.httpOptions)
   }
 }

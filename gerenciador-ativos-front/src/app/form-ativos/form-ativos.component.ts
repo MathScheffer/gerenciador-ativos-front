@@ -16,12 +16,28 @@ export class FormAtivosComponent {
 
   }
 salvar = () => {
-  if(this.ativo.id && this.ativo.nome && this.ativo.tag_ativo){
-    this.http.adicionarAtivo(this.ativo).subscribe(ativo => {
-      alert (`${ativo.nome} adicionado.`)
+  if(this.ativo.nome && this.ativo.tag_ativo){
+    this.http.listarAtivos().subscribe((ativos: Ativos[]) => {
+      ativos.sort((a: Ativos,b: Ativos) => {
+        if(a.id < b.id){
+          return -1
+        }
+        if(a.id > b.id){
+          return 1
+        }
 
-      this.ativo = new Ativos();
-      this.router.navigate(['/ativos'])
+        return 0
+      })
+
+      const id = ativos[ativos.length - 1]?.id + 1;
+     
+      this.ativo.id = id ? id : 1;
+
+      this.http.adicionarAtivo(this.ativo).subscribe(ativo => {
+        this.ativo = new Ativos();
+        this.router.navigate(['/ativos'])
+      })
+
     })
   }
   
