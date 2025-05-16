@@ -1,54 +1,81 @@
 {
   "ativos": [
     {
-      "id": "xpto",
+      "id": "1",
       "nome": "monitor",
       "tag_ativo": "blablabla"
     },
     {
-      "id": "xpto2",
+      "id": "2",
       "nome": "gabinete",
       "tag_ativo": "bl123"
     },
     {
-      "id": "ASD",
+      "id": "3",
       "nome": "asd",
       "tag_ativo": "ASD"
     },
     {
-      "id": "ASD",
+      "id": "4",
       "nome": "asd",
       "tag_ativo": "ASD"
     },
     {
-      "id": "ASD",
+      "id": "5",
       "nome": "asd",
       "tag_ativo": "ASD"
     },
     {
-      "id": "rwarw",
+      "id": "6",
       "nome": "asd",
       "tag_ativo": "123"
     },
     {
-      "id": "daf",
+      "id": "7",
       "nome": "12",
       "tag_ativo": "12"
     },
     {
-      "id": "zxcv",
+      "id": "8",
       "nome": "zxcv",
       "tag_ativo": "zxcv"
     },
     {
-      "id": "sdf",
+      "id": "9",
       "nome": "fe",
       "tag_ativo": "we"
     },
     {
-      "id": "teste",
+      "id": "10",
       "nome": "sd",
       "tag_ativo": "dfs"
+    },
+    {
+      "id": "1",
+      "nome": "teste",
+      "tag_ativo": "2"
+    }
+  ],
+  "usuario": {
+    "usuario": "admin",
+    "senha": "123",
+    "role": "adm"
+  },
+  "locais": [
+    {
+      "id": "1",
+      "nome": "Recepção",
+      "tag_local": "local1"
+    },
+    {
+      "id": "2",
+      "nome": "UTI 1",
+      "tag_local": "local2"
+    },
+    {
+      "id": "3",
+      "nome": "UTI 2",
+      "tag_local": "local3"
     }
   ]
 }

@@ -8,16 +8,19 @@ import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormAtivosComponent } from './form-ativos/form-ativos.component';
 import { FormLocalComponent } from './form-local/form-local.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard.guard';
 
 const routes: Routes = [
+  {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path:'ativos', component:ListaAtivosComponent},
   {path: 'locais', component: ListaLocaisComponent},
   {path:'localizacoes', component: LocalizacoesComponent},
   {path:'cadastro', component: CadastroComponent, title: 'cadastro', children:[
-    {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo'},
+    {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo', },
     {path: 'local', component: FormLocalComponent, title: 'cadastro local'},
-  ]
+  ], canActivate: [AuthGuard]
   },
   {path:'', redirectTo: 'localizacoes', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

@@ -1,0 +1,24 @@
+<h2>Login</h2>
+<div class="container d-flex justify-content-center">
+  <form (ngSubmit)="logar()" class="container d-flex justify-content-center flex-column">
+    <div class="mb-3 row">
+      <label class="form-label">
+        Nome
+        <input [(ngModel)]="nome" name="nome" class="form-control" type="text" />
+      </label>
+      {{nome}}
+    </div>
+    <div class="mb-3 row">
+      <label class="form-label">
+        Senha
+        <input [(ngModel)]="senha" name="senha" class="form-control" type="password" />
+        {{senha}}
+      </label>
+    </div>
+
+    <div class="mb-3 row justify-content-between">
+      <button class="col-5 btn btn-primary me-3" type="submit">Salvar</button>
+    </div>
+  </form>
+
+</div>

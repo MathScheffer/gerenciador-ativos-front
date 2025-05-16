@@ -12,9 +12,11 @@ import { Local } from '../local';
 })
 export class ListaLocaisComponent {
   nomePesquisa?: string;
-  listaLocais: Local[];
+  listaLocais: Local[] = [];
   constructor(private locaisService: LocaisService){
-      this.listaLocais = locaisService.listarLocais();
+      locaisService.listarLocais().subscribe(locais => {
+        this.listaLocais = locais
+      });
   }
 
 }

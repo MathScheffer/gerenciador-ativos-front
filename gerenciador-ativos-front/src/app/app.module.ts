@@ -15,6 +15,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormLocalComponent } from './form-local/form-local.component';
 import { FormAtivosComponent } from './form-ativos/form-ativos.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard.guard';
+import { AppContainerComponent } from './app-container/app-container.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { FormAtivosComponent } from './form-ativos/form-ativos.component';
     ListaLocaisComponent,
     CadastroComponent,
     FormLocalComponent,
-    FormAtivosComponent
+    FormAtivosComponent,
+    LoginComponent,
+    AppContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,7 @@ import { FormAtivosComponent } from './form-ativos/form-ativos.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
