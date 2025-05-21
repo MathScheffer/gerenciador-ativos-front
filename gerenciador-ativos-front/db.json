@@ -1,34 +1,14 @@
 {
   "ativos": [
     {
-      "id": 1,
-      "nome": "monitor",
-      "tag_ativo": "blablabla"
-    },
-    {
-      "id": 2,
-      "nome": "gabinete",
+      "id": "2",
+      "nome": "gabinete 2",
       "tag_ativo": "bl123"
     },
     {
-      "id": 3,
-      "nome": "asd",
-      "tag_ativo": "ASD"
-    },
-    {
-      "id": 4,
-      "nome": "sdf",
-      "tag_ativo": "sdf"
-    },
-    {
-      "id": 5,
-      "nome": "sdf",
-      "tag_ativo": "sdf"
-    },
-    {
-      "id": 6,
-      "nome": "dsf",
-      "tag_ativo": "sdf"
+      "id": "21",
+      "nome": "teste",
+      "tag_ativo": "123"
     }
   ],
   "usuario": {
@@ -38,24 +18,19 @@
   },
   "locais": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Recepção",
       "tag_local": "local1"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "UTI 1",
       "tag_local": "local2"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "UTI 2",
       "tag_local": "local3"
-    },
-    {
-      "id": 4,
-      "nome": "sdf",
-      "tag_local": "sdf"
     }
   ]
 }

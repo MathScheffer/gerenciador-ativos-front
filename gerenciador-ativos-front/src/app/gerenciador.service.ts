@@ -33,8 +33,18 @@ export class GerenciadorService {
     return this.http.get<Ativos[]>(`${this.BASE_API}/ativos`);
   }
 
+  buscarPorId(id: number): Observable<Ativos> {
+    return this.http.get<Ativos>(`${this.BASE_API}/ativos/${id}`)
+  }
   adicionarAtivo = (ativo: Ativos): Observable<Ativos> => {
-
     return this.http.post<Ativos>(`${this.BASE_API}/ativos`, ativo, this.httpOptions)
+  }
+
+  editar = (id: number, ativo: Ativos): Observable<Ativos> => {
+    return this.http.put<Ativos>(`${this.BASE_API}/ativos/${id}`, ativo, this.httpOptions)
+  }
+
+  deletar = (id: number) : Observable<Ativos> => {
+    return this.http.delete<Ativos>(`${this.BASE_API}/ativos/${id}`, this.httpOptions)
   }
 }

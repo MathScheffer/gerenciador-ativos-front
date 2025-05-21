@@ -18,6 +18,8 @@
         <td>{{local.id}}</td>
         <td>{{local.nome}}</td>
         <td>{{local.tag_local}}</td>
+        <td><a class="btn btn-primary" routerLink="/locais/edit/{{local.id}}">Editar</a></td>
+        <td><a class="btn btn-danger" routerLink="/locais" (click)="deletar(local.id)"> Deletar</a></td>
       </tr>
     </tbody>
   </table>

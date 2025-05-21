@@ -15,10 +15,12 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path:'ativos', component:ListaAtivosComponent},
+  {path: 'ativos/edit/:id', component: FormAtivosComponent, title: 'Editar ativos', canActivate: [AuthGuard]},
   {path: 'locais', component: ListaLocaisComponent},
+  {path: 'locais/edit/:id', component: FormLocalComponent, title: 'Editar Local', canActivate: [AuthGuard]},
   {path:'localizacoes', component: LocalizacoesComponent},
   {path:'cadastro', component: CadastroComponent, title: 'cadastro', children:[
-    {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo', },
+    {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo'},
     {path: 'local', component: FormLocalComponent, title: 'cadastro local'},
   ], canActivate: [AuthGuard]
   },

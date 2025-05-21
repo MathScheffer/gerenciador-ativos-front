@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GerenciadorService } from '../gerenciador.service';
 import { Ativos } from '../ativos';
+import { AuthGuardService } from '../auth-guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-ativos',
@@ -12,7 +14,10 @@ export class ListaAtivosComponent {
   nomePesquisa?: string;
   listaAtivos:  Ativos[] = []
   
-  constructor(private gerenciadorService: GerenciadorService){
+  constructor(private gerenciadorService: GerenciadorService,
+    private authService: AuthGuardService,
+    private router: Router
+  ){
     this.listar();
   }
 
@@ -20,5 +25,16 @@ export class ListaAtivosComponent {
     this.gerenciadorService.listarAtivos().subscribe(ativos => {
       this.listaAtivos = ativos;
     });
+  }
+
+  deletar(id: number){
+    if(!this.authService.verificarLogin()){
+      this.router.navigate(['/login'])
+    }else{
+      this.gerenciadorService.deletar(id).subscribe( (ativo: Ativos) => {
+        alert(`Ativo ${ativo.nome} removido!`)
+        this.listar()
+      })
+    }
   }
 }

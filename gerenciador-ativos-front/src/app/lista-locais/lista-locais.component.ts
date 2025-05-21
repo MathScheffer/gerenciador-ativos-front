@@ -3,6 +3,8 @@ import { GerenciadorService } from '../gerenciador.service';
 import { Ativos } from '../ativos';
 import { LocaisService } from '../locais.service';
 import { Local } from '../local';
+import { AuthGuardService } from '../auth-guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-locais',
@@ -13,10 +15,25 @@ import { Local } from '../local';
 export class ListaLocaisComponent {
   nomePesquisa?: string;
   listaLocais: Local[] = [];
-  constructor(private locaisService: LocaisService){
-      locaisService.listarLocais().subscribe(locais => {
-        this.listaLocais = locais
-      });
+  constructor(private locaisService: LocaisService, private authService: AuthGuardService, private router: Router){
+    this.listar()
   }
 
+  listar = () => {
+    this.locaisService.listarLocais().subscribe(locais => {
+      this.listaLocais = locais
+    });
+  }
+
+  deletar = (id: number) => {
+    if(!this.authService.verificarLogin()){
+      this.router.navigate(['/login'])
+    }else{
+      this.locaisService.deletar(id).subscribe( (local: Local) => {
+        alert(`Local ${local.nome} deletado!`)
+  
+        this.listar()
+      })
+    }
+  } 
 }

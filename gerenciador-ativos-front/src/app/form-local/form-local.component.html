@@ -1,6 +1,12 @@
 <h2>Local</h2>
 <div class="container d-flex justify-content-center">
   <form (ngSubmit)="salvar()" class="container d-flex justify-content-center flex-column">
+    <div class="mb-3 row" *ngIf="id">
+      <label class="form-label">
+        ID
+        <input class="form-control" type="text" [(ngModel)]="local.id" name="id" disabled />
+      </label>
+    </div>
     <div class="mb-3 row">
       <label class="form-label">
         Nome
@@ -10,12 +16,12 @@
     <div class="mb-3 row">
       <label class="form-label">
         Tag Local
-        <input class="form-control" type="text" [(ngModel)]="local.tag_local" name="tag_local" />
+        <input class="form-control" type="text" [(ngModel)]="local.tag_local" name="tag_local" [disabled]="id?.toLocaleString() !== 'NaN' " />
       </label>
     </div>
 
     <div class="mb-3 row justify-content-between">
-      <button class="col-5 btn btn-primary me-3" type="submit">Salvar</button>
+      <button class="col-5 btn btn-primary me-3" type="submit">{{botaoAcao}}</button>
       <button class="col-5 btn btn-primary me-3" type="submit" (click)="inicio()">Inicio</button>
     </div>
   </form>
