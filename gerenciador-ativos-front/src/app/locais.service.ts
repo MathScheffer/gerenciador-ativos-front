@@ -9,9 +9,9 @@ import { AuthGuardService } from './auth-guard.service';
 })
 export class LocaisService {
   private locais: Local[] = [
-    {id: 1, nome: "Recepção", tag_local: "local1"},
-    {id: 2, nome: "UTI 1", tag_local: "local2"},
-    {id: 3, nome: "UTI 2",tag_local: "local3"}
+    {id: "1", nome: "Recepção", tag_local: "local1"},
+    {id: "2", nome: "UTI 1", tag_local: "local2"},
+    {id: "3", nome: "UTI 2",tag_local: "local3"}
   ]
   BASE_API = "http://localhost:3000/locais"
   httpOptions = {

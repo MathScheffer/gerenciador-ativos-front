@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 
 
 export class Local {
-  "id": number;
+  "id": string;
   "nome": string;
   "tag_local": string;
 }

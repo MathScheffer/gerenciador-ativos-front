@@ -51,8 +51,9 @@ export class FormLocalComponent {
             }
             return 0;
           })
-          const id = locais[locais.length - 1].id
-          this.local.id = id ? id + 1 : 1;
+          let id: any = locais[locais.length - 1]?.id
+          id = id ? parseInt(id) + 1 : 1
+          this.local.id = id.toString();
   
           this.locaisService.adicionarLocal(this.local).subscribe(local => {
             this.local = new Local();

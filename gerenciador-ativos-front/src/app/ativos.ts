@@ -1,5 +1,5 @@
 export class Ativos {
-  "id": number;
+  "id": string;
   "nome": string;
   "tag_ativo": string
 }

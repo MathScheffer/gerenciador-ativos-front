@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 export class GerenciadorService {
   private ativos: Ativos[] = [
     {
-      id: 1,
+      id: "1",
       nome: 'monitor',
       tag_ativo: 'blablabla'
     },
     {
-      id: 2,
+      id: "2",
       nome: 'gabinete',
       tag_ativo: 'bl123'
     }

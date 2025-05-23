@@ -54,9 +54,9 @@ salvar = () => {
           return 0
         })
   
-        const id = ativos[ativos.length - 1]?.id + 1;
-       
-        this.ativo.id = id ? id : 1;
+        let id: any = ativos[ativos.length - 1]?.id;
+        id = id ? parseInt(id) + 1 : 1
+        this.ativo.id =  id.toString()
   
         this.http.adicionarAtivo(this.ativo).subscribe(ativo => {
           this.ativo = new Ativos();
