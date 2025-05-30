@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor (private route: Router, private activatedRoute: ActivatedRoute){
+    route.events.subscribe(event => {
+      if(event instanceof NavigationEnd && event.url==='/login'){
+        
+      }
+    })
+  }
 }
