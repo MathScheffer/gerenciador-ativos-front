@@ -5,22 +5,24 @@
     <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um nome para pesquisar...">
   </div>
   <p>{{nomePesquisa}}</p>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>NOME</th>
-        <th>TAG ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let local of (listaLocais | filter: 'nome' : nomePesquisa )">
-        <td>{{local.id}}</td>
-        <td>{{local.nome}}</td>
-        <td>{{local.tag_local}}</td>
-        <td><a class="btn btn-primary" routerLink="/locais/edit/{{local.id}}">Editar</a></td>
-        <td><a class="btn btn-danger" routerLink="/locais" (click)="deletar(local.id)"> Deletar</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOME</th>
+          <th>TAG ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let local of (listaLocais | filter: 'nome' : nomePesquisa )">
+          <td>{{local.id}}</td>
+          <td>{{local.nome}}</td>
+          <td>{{local.tag_local}}</td>
+          <td class="text-center"><a class="btn btn-primary" routerLink="/locais/edit/{{local.id}}">Editar</a></td>
+          <td class="text-center"><a class="btn btn-danger" routerLink="/locais" (click)="deletar(local.id)"> Deletar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

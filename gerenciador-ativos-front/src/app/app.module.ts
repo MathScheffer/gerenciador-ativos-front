@@ -18,6 +18,23 @@ import { FormAtivosComponent } from './form-ativos/form-ativos.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.guard';
 import { AppContainerComponent } from './app-container/app-container.component';
+import { FormLocalizacoesComponent } from './form-localizacoes/form-localizacoes.component';
+import { TesteMqttComponent } from './teste-mqtt/teste-mqtt.component';
+import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+
+
+  export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+    hostname: 'broker.emqx.io',
+    port: 8084, 
+    path: '/mqtt', 
+    //TODO: Pegar o mac do servidor ou outra forma de identificação únic
+    clean: true,
+    
+    clientId: `front-aplicacao-${Date.now().toString()}`,
+    protocol: "wss", 
+     username: 'euu', 
+     password: 'eunopass', 
+    };
 
 @NgModule({
   declarations: [
@@ -33,9 +50,12 @@ import { AppContainerComponent } from './app-container/app-container.component';
     FormLocalComponent,
     FormAtivosComponent,
     LoginComponent,
-    AppContainerComponent
+    AppContainerComponent,
+    FormLocalizacoesComponent,
+    TesteMqttComponent
   ],
   imports: [
+     MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

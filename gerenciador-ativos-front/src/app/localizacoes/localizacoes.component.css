@@ -1,0 +1,32 @@
+@media (max-width: 576px) {
+  #nomePesquisa {
+    margin-bottom: .5rem !important;;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto; /* Permite rolar horizontalmente se a tabela for maior que o wrapper */
+  /* display: flex;  Se você quiser que o wrapper se ajuste ao conteúdo da tabela e a tabela não encolha */
+  /* flex-wrap: nowrap; */ /* Garante que a tabela não quebre para uma nova linha se houver outros itens flex */
+}
+
+.table-wrapper table {
+  /* Estas propriedades garantem que a tabela se ajuste ao conteúdo e não encolha */
+  display: block; /* Essencial para que flexbox/grid funcione bem com tabelas em certos cenários */
+  width: max-content; /* Faz com que a tabela ocupe a largura máxima do seu conteúdo */
+  /* ou min-content, ou 100% se não houver rolagem e o conteúdo determinar o tamanho */
+}
+
+/* Opcional, mas muito útil: evitar quebra de linha dentro das células */
+.table-wrapper table td,
+.table-wrapper table th {
+  white-space: nowrap; /* Impede que o texto dentro das células quebre linha */
+  padding: 8px;
+  /* border: 1px solid #ccc; */
+}
+
+/* Estilos básicos para a tabela */
+table {
+  border-collapse: collapse;
+  width: 100%; /* Pode ser ajustado ou removido dependendo do seu objetivo */
+}

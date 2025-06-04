@@ -1,27 +1,93 @@
 import { Injectable } from '@angular/core';
 import { Localizacao } from './localizacao';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { forkJoin, Observable } from 'rxjs';
+import { LocaisService } from './locais.service';
+import { GerenciadorService } from './gerenciador.service';
+import { Local } from './local';
+import { Ativos } from './ativos';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LocalizacaoService {
-  private localizacoes: Localizacao[] = [{
-    id: "1",
-    tag_ativo: "xpto",
-    tag_local: "local1",
-    local: "Recepção",
-    ativo: "monitor"
-  },
-  {
-    id: "2",
-    tag_ativo: "xpto2",
-    tag_local: "local3",
-    local: "UTI 2",
-    ativo: "gabinete",
-    ultima_localizacao: "Recepção"
-  }]
+export class LocalizacaoService   {
+  BASE_API = "http://localhost:3000/localizacoes"
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type":"application/json"
+    })
+  }
+  gets :{locais: Local[], ativos: Ativos[], localizacoes: Localizacao[]} | null = null
 
-  constructor() { }
+  private localizacoes: Localizacao[] = []
 
-  listarLocalizacoes = () => this.localizacoes;
+  constructor(private http: HttpClient, private locaisService: LocaisService, private ativoService: GerenciadorService) {
+   
+   }
+
+  listarLocalizacoes = () : Observable<Localizacao[]> => {
+    return  this.http.get<Localizacao[]>(`${this.BASE_API}`);
+  }
+
+  verificarRegistro = (tag_ativo: string, tag_local: string, fnCallback: any) => {
+    forkJoin({
+      ativos: this.ativoService.listarAtivos(),
+      locais: this.locaisService.listarLocais(),
+      localizacoes: this.listarLocalizacoes()
+    }).subscribe(({ativos, locais, localizacoes}) => {
+      this.gets = {ativos, locais, localizacoes}
+
+      var isTagAtivo =  this.gets.ativos.find( (ativo: Ativos) => ativo.tag_ativo === tag_ativo)
+      var isTagLocal = this.gets.locais.find( (local: Local) => local.tag_local === tag_local)
+
+      var registrosIdenticos = this.gets.localizacoes.filter( (l: Localizacao) => l.tag_local === tag_local && l.tag_ativo === tag_ativo)
+
+      var todasEntradasAtivos = this.gets.localizacoes.filter( (l: Localizacao) =>  l.tag_ativo === tag_ativo)
+
+      fnCallback(isTagAtivo, isTagLocal, registrosIdenticos, todasEntradasAtivos)
+
+      return isTagAtivo  && isTagLocal && !registrosIdenticos && !todasEntradasAtivos
+    })
+  }
+
+  adicionarLocalizacao = (localizacao: Localizacao, fnCallback: any) => {
+      this.verificarRegistro(localizacao.tag_ativo, localizacao.tag_local, (ativo: Ativos, local: Local,  registrosIdenticos:         Localizacao[], registrosEntradasAtivos: Localizacao[]) => {
+
+
+      })
+  }
+
+  postLocalizacao = (localizacao: Localizacao): Observable<Localizacao> => {
+   return this.http.post<Localizacao>(this.BASE_API, localizacao, this.httpOptions )
+  }
+
+  editarLocalizacao = (id: number ,localizacao: Localizacao): Observable<Localizacao> =>{
+      return this.http.put<Localizacao>(`${this.BASE_API}/${id}`, localizacao, this.httpOptions )
+  }
+
+/*   registrarSaida = (id: number ,localizacao: Localizacao, fnCallback): Observable<Localizacao> =>{
+    this.http.get<Localizacao[]>(`${this.BASE_API}`).subscribe( l => {
+      return this.http.put<Localizacao>(`${this.BASE_API}/${id}`, localizacao, this.httpOptions )
+    })
+      
+  } */
+
+      corrigirSaidas = (localizacoes: Localizacao[], data: Date) => {
+    localizacoes
+      localizacoes.forEach(l => {
+        if(!l.data_saida){
+          l.data_saida = data
+           this.editarLocalizacao(parseInt(l.id), l).subscribe(l => {
+        console.log(`Localizacao ${l.id} editada!`)
+      }) 
+        }
+        
+      })
+    }
+
+    registrarSaida = async(id: number, localizacao: Localizacao) => {
+      this.editarLocalizacao(id, localizacao).subscribe(l => {
+        console.log(`Localizacao ${l.id} editada!`)
+      }) 
+    }
 }

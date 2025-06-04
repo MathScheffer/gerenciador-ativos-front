@@ -1,1 +1,21 @@
 @import   "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.form-label {
+  padding-left:  unset;
+  padding-right: unset;
+}
+
+.form-cadastro-inicio {
+  margin-right: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table-container table th{
+  white-space: nowrap;
+}
+.table-container table {
+ /*  width: max-content; */
+}

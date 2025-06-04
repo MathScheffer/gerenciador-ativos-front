@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { IMqttServiceOptions } from 'ngx-mqtt';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'gerenciador-ativos-front';
   aparecerHeader = true
+
 
   constructor(private route: Router){
     route.events.subscribe(e => {

@@ -1,39 +1,47 @@
 <section class="container">
-  <h2>Locais</h2>
+  <h2>Localizações</h2>
 
   <div class="mb-3 row">
-    <div class="col-8">
+    <div class="col-sm-8">
       <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um {{filtroPesquisa}} para pesquisar...">
     </div>
-    <div class="col-4">
+    <div class="col-sm-4">
       <select class="form-select" [(ngModel)]="filtroPesquisa" name="campoPesquisa" id="campoPesquisa" aria-placeholder="selecione um filtro">
         <option value="ativo" selected>Ativo</option>
         <option value="local">Local</option>
         <option value="ultima_localizacao">Última Localização</option>
+        <option value="data_entrada">Entrada</option>
+        <option value="data_saida">Saída</option>
       </select>
     </div>
   </div>
   <p>{{nomePesquisa}}</p>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>ATIVO</th>
-        <th>LOCAL</th>
-        <th>ULTIMA LOCALIZACAO</th>
-        <th>TAG LOCAL</th>
-        <th>TAG ATIVO</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let localizacao of (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa )">
-        <td>{{localizacao.id}}</td>
-        <td>{{localizacao.ativo}}</td>
-        <td>{{localizacao.local}}</td>
-        <td>{{localizacao.ultima_localizacao}}</td>
-        <td>{{localizacao.tag_local}}</td>
-        <td>{{localizacao.tag_ativo}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ATIVO</th>
+          <th>LOCAL</th>
+          <th>DATA DA ENTRADA</th>
+          <th>ULTIMA LOCALIZACAO</th>
+          <th>DATA DA SAIDA</th>
+          <th>TAG LOCAL</th>
+          <th>TAG ATIVO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let localizacao of (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa )">
+          <td>{{localizacao.id}}</td>
+          <td>{{localizacao.ativo}}</td>
+          <td>{{localizacao.local}}</td>
+          <td>{{localizacao.data_entrada | date: "dd/MM/YYYY : HH:mm:ss"}}</td>
+          <td>{{localizacao.ultima_localizacao}}</td>
+          <td>{{localizacao.data_saida | date: "dd/MM/YYYY : HH:mm:ss"}}</td>
+          <td>{{localizacao.tag_local}}</td>
+          <td>{{localizacao.tag_ativo}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

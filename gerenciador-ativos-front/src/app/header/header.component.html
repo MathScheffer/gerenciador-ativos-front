@@ -16,9 +16,17 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/locais" routerLinkActive="active">Locais</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/cadastro/local" routerLinkActive="active">Cadastro</a>
-          </li>
+          <div class="dropdown">
+            <a (click)="naoAvancar($event)" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [routerLink]="this.ehCadastro ? this.rotaAtual : null " routerLinkActive="active">
+              Cadastro
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/cadastro/local" routerLinkActive="active">Local</a></li>
+              <li><a class="dropdown-item" routerLink="/cadastro/ativo" routerLinkActive="active">Ativos</a></li>
+              <li><a class="dropdown-item" routerLink="/cadastro/entrada" routerLinkActive="active">Entrada</a></li>
+              <li><a class="dropdown-item" routerLink="/cadastro/saida" routerLinkActive="active">Saida</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>

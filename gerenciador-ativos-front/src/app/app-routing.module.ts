@@ -10,8 +10,11 @@ import { FormAtivosComponent } from './form-ativos/form-ativos.component';
 import { FormLocalComponent } from './form-local/form-local.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.guard';
+import { FormLocalizacoesComponent } from './form-localizacoes/form-localizacoes.component';
+import { TesteMqttComponent } from './teste-mqtt/teste-mqtt.component';
 
 const routes: Routes = [
+  {path:'teste', component:TesteMqttComponent},
   {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path:'ativos', component:ListaAtivosComponent},
@@ -22,6 +25,8 @@ const routes: Routes = [
   {path:'cadastro', component: CadastroComponent, title: 'cadastro', children:[
     {path: 'ativo', component: FormAtivosComponent, title: 'cadastro ativo'},
     {path: 'local', component: FormLocalComponent, title: 'cadastro local'},
+    {path: 'entrada', component: FormLocalizacoesComponent, title: 'Cadastro entrada'},
+    {path: 'saida', component: FormLocalizacoesComponent, title: 'Cadastro saida'},
   ], canActivate: [AuthGuard]
   },
   {path:'', redirectTo: 'localizacoes', pathMatch: 'full'},
