@@ -65,14 +65,7 @@ export class LocalizacaoService   {
       return this.http.put<Localizacao>(`${this.BASE_API}/${id}`, localizacao, this.httpOptions )
   }
 
-/*   registrarSaida = (id: number ,localizacao: Localizacao, fnCallback): Observable<Localizacao> =>{
-    this.http.get<Localizacao[]>(`${this.BASE_API}`).subscribe( l => {
-      return this.http.put<Localizacao>(`${this.BASE_API}/${id}`, localizacao, this.httpOptions )
-    })
-      
-  } */
-
-      corrigirSaidas = (localizacoes: Localizacao[], data: Date) => {
+    corrigirSaidas = (localizacoes: Localizacao[], data: Date) => {
     localizacoes
       localizacoes.forEach(l => {
         if(!l.data_saida){

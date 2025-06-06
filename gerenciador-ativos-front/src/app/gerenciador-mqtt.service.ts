@@ -18,8 +18,9 @@ export class GerenciadorMqttService implements OnDestroy{
 
 
   constructor(private mqttService: MqttService, private localizacaoService: LocalizacaoService){
-    this.subscription = this.mqttService.observe('localizacoes/aPersistir').subscribe( (message: IMqttMessage) => {
+    this.subscription = this.mqttService.observe('localizacoes/persistir').subscribe( (message: IMqttMessage) => {
       console.log('Mensagem para persistir recebida!')
+      console.log(message)
       const tag_ativo = JSON.parse(message.payload.toString()).msg?.tag_ativo;
       const tag_local = JSON.parse(message.payload.toString()).msg?.tag_local;
       console.log(JSON.parse(message.payload.toString()).msg?.tag_local)
@@ -28,7 +29,9 @@ export class GerenciadorMqttService implements OnDestroy{
             if(ativo && local){
                   this.localizacao.data_entrada = new Date()
                   //o arduino mandou mais um sinal. Se houver um registro da mesma combinação, preciso apontar uma saída nos registros velhos.
-                  if (registrosEntradasAtivos)  this.localizacaoService.corrigirSaidas(registrosEntradasAtivos, this.localizacao.data_entrada);
+                  if (registrosEntradasAtivos)  {
+                    this.localizacaoService.corrigirSaidas(registrosEntradasAtivos, this.localizacao.data_entrada)
+                  };
                   //Aqui eu corrijo que uma saída em todos os locais que o ativo passou anteriormente
                   if (registrosIdenticos){
                      this.localizacaoService.corrigirSaidas(registrosIdenticos, this.localizacao.data_entrada )
@@ -38,7 +41,8 @@ export class GerenciadorMqttService implements OnDestroy{
                   this.localizacao.local = local.nome
                   this.localizacao.tag_ativo = tag_ativo
                   this.localizacao.tag_local = tag_local
-                  
+                  this.localizacao.id = Date.now().toString()
+                  console.log(`Adicionando via mqtt: ${JSON.stringify(this.localizacao)}`)
                   this.localizacaoService.postLocalizacao(this.localizacao).subscribe(localizacao => {
                     this.localizacao = new Localizacao();
                       // Emita um valor através do Subject para notificar os ouvintes
