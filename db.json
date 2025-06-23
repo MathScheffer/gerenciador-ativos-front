@@ -150,15 +150,7 @@
       "local": "UTI 2",
       "ativo": "monitor",
       "data_entrada": "2025-06-06T01:50:39.506Z",
-      "data_saida": "2025-06-23T02:12:27.610Z"
-    },
-    {
-      "id": "1749174639506",
-      "tag_local": "local4",
-      "tag_ativo": "xpto",
-      "local": "UTI 2",
-      "ativo": "monitor",
-      "data_entrada": "2025-06-06T01:50:39.506Z"
+      "data_saida": "2025-06-23T15:16:03.638Z"
     },
     {
       "id": "1749175103205",
@@ -177,6 +169,77 @@
       "ativo": "monitor",
       "data_entrada": "2025-06-23T02:07:43.032Z",
       "data_saida": "2025-06-23T02:11:08.608Z"
+    },
+    {
+      "id": "1750644462996",
+      "tag_local": "local4",
+      "tag_ativo": "xpto",
+      "local": "UTI 2",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T02:07:43.032Z",
+      "data_saida": "2025-06-23T14:03:43.042Z"
+    },
+    {
+      "id": "1750644462998",
+      "tag_local": "local4",
+      "tag_ativo": "xpto",
+      "local": "UTI 2",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T02:07:43.032Z",
+      "data_saida": "2025-06-23T14:59:06.438Z"
+    },
+    {
+      "id": "1750687423002",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T14:03:43.042Z",
+      "data_saida": "2025-06-23T14:59:06.438Z"
+    },
+    {
+      "id": "1750690746466",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T14:59:06.438Z",
+      "data_saida": "2025-06-23T15:02:18.186Z"
+    },
+    {
+      "id": "1750690938205",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T15:02:18.186Z",
+      "data_saida": "2025-06-23T15:06:11.594Z"
+    },
+    {
+      "id": "1750691171616",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T15:06:11.594Z",
+      "data_saida": "2025-06-23T15:11:30.247Z"
+    },
+    {
+      "id": "1750691490266",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T15:11:30.247Z",
+      "data_saida": "2025-06-23T15:12:17.651Z"
+    },
+    {
+      "id": "1750691763650",
+      "tag_local": "local3",
+      "tag_ativo": "xpto",
+      "local": "UTI 1",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T15:16:03.638Z"
     }
   ]
 }

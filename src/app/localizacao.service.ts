@@ -65,17 +65,18 @@ export class LocalizacaoService   {
       return this.http.put<Localizacao>(`${this.BASE_API}/${id}`, localizacao, this.httpOptions )
   }
 
-    corrigirSaidas = (localizacoes: Localizacao[], data: Date) => {
-    localizacoes
-      localizacoes.forEach(l => {
-        if(!l.data_saida){
-          l.data_saida = data
-           this.editarLocalizacao(parseInt(l.id), l).subscribe(l => {
-        console.log(`Localizacao ${l.id} editada!`)
-      }) 
-        }
-        
-      })
+    corrigirSaidas = async(localizacoes: Localizacao[], data: Date) => {
+      for(var l of localizacoes) {
+          if(!l.data_saida){
+            l.data_saida = data
+           await this.http.put<Localizacao>(`${this.BASE_API}/${parseInt(l.id)}`, l, this.httpOptions ).subscribe(l => {
+            console.log(`Localizacao ${l.id} editada!\nData Saída: ${l.data_saida}`)
+           })
+/*             await this.editarLocalizacao(parseInt(l.id), l).subscribe(l => {
+                console.log(`Localizacao ${l.id} editada!\nData Saída: ${l.data_saida}`)
+            })  */
+          }
+      }
     }
 
     registrarSaida = async(id: number, localizacao: Localizacao) => {

@@ -20,10 +20,10 @@ export class GerenciadorMqttService implements OnDestroy{
   constructor(private mqttService: MqttService, private localizacaoService: LocalizacaoService){
     this.subscription = this.mqttService.observe('localizacoes/persistir').subscribe( (message: IMqttMessage) => {
       console.log('Mensagem para persistir recebida!')
-      console.log(message)
-      const tag_ativo = JSON.parse(message.payload.toString()).msg?.tag_ativo;
-      const tag_local = JSON.parse(message.payload.toString()).msg?.tag_local;
-      console.log(JSON.parse(message.payload.toString()).msg?.tag_local)
+      console.log(JSON.parse(message.payload.toString()))
+      const tag_ativo = JSON.parse(message.payload.toString()).tag_ativo;
+      const tag_local = JSON.parse(message.payload.toString()).tag_local;
+      console.log(JSON.parse(message.payload.toString()).tag_local)
       if(tag_ativo && tag_local){
         //TODO verificar o que está acontecendo na saida
         localizacaoService.verificarRegistro(tag_ativo, tag_local, (ativo: Ativos, local: Local, registrosIdenticos: Localizacao[], registrosEntradasAtivos: Localizacao[]) => {
@@ -31,6 +31,7 @@ export class GerenciadorMqttService implements OnDestroy{
                   this.localizacao.data_entrada = new Date()
                   //o arduino mandou mais um sinal. Se houver um registro da mesma combinação, preciso apontar uma saída nos registros velhos.
                   if (registrosEntradasAtivos)  {
+                    console.log(registrosEntradasAtivos)
                     this.localizacaoService.corrigirSaidas(registrosEntradasAtivos, this.localizacao.data_entrada)
                   };
                   //Aqui eu corrijo que uma saída em todos os locais que o ativo passou anteriormente

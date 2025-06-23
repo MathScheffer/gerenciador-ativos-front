@@ -26,7 +26,7 @@ export class FormLocalizacoesComponent {
   salvar = () => {
     //TODO adicionar aqui o passo a passo para editar.
     this.localizacao?.id
-      if(this.localizacao?.tag_ativo&& this.localizacao.tag_local){
+      if(this.localizacao?.tag_ativo && this.localizacao.tag_local){
         this.localizacoesService.listarLocalizacoes().subscribe( (localizacoes: Localizacao[]) => {
           this.localizacao.id = Date.now().toString();
           

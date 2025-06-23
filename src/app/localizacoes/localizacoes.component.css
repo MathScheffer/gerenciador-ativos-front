@@ -30,3 +30,7 @@ table {
   border-collapse: collapse;
   width: 100%; /* Pode ser ajustado ou removido dependendo do seu objetivo */
 }
+
+.table-container {
+  max-height: 60vh;
+}

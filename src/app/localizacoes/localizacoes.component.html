@@ -15,7 +15,7 @@
         <option value="data_saida">Saída</option>
       </select>
     </div>
-        <div class="col-sm-3">
+    <div class="col-sm-3">
       <select class="form-select" [(ngModel)]="entradaSaida" name="entradaSaida" id="entradaSaida" aria-placeholder="Entrada / Saída">
         <option value="entrada" selected>Somente Entrada</option>
         <option value="saida">Somente Saídas</option>
@@ -52,4 +52,9 @@
       </tbody>
     </table>
   </div>
+  <div *ngIf="false">
+  {{ (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa | filter: 'data_saida' : entradaSaida)}}
+</div>
+
+<p>Total de linhas: <strong>{{ (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa | filter: 'data_saida' : entradaSaida)?.length || 0 }}</strong></p>
 </section>
