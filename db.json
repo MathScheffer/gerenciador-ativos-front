@@ -150,7 +150,7 @@
       "local": "UTI 2",
       "ativo": "monitor",
       "data_entrada": "2025-06-06T01:50:39.506Z",
-      "data_saida": "2025-06-06T01:58:23.204Z"
+      "data_saida": "2025-06-23T02:12:27.610Z"
     },
     {
       "id": "1749174639506",
@@ -166,7 +166,17 @@
       "tag_ativo": "xpto",
       "local": "UTI 2",
       "ativo": "monitor",
-      "data_entrada": "2025-06-06T01:58:23.204Z"
+      "data_entrada": "2025-06-06T01:58:23.204Z",
+      "data_saida": "2025-06-23T02:07:43.032Z"
+    },
+    {
+      "id": "1750644462995",
+      "tag_local": "local4",
+      "tag_ativo": "xpto",
+      "local": "UTI 2",
+      "ativo": "monitor",
+      "data_entrada": "2025-06-23T02:07:43.032Z",
+      "data_saida": "2025-06-23T02:11:08.608Z"
     }
   ]
 }

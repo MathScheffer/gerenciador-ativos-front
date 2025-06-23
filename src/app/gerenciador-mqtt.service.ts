@@ -25,6 +25,7 @@ export class GerenciadorMqttService implements OnDestroy{
       const tag_local = JSON.parse(message.payload.toString()).msg?.tag_local;
       console.log(JSON.parse(message.payload.toString()).msg?.tag_local)
       if(tag_ativo && tag_local){
+        //TODO verificar o que está acontecendo na saida
         localizacaoService.verificarRegistro(tag_ativo, tag_local, (ativo: Ativos, local: Local, registrosIdenticos: Localizacao[], registrosEntradasAtivos: Localizacao[]) => {
             if(ativo && local){
                   this.localizacao.data_entrada = new Date()

@@ -22,6 +22,7 @@ export class FormLocalizacoesComponent {
       this.titulo = this.route.snapshot.title
   }
 
+  //TODO: verificar o por quê da entrada não está sendo acionada quando há 2 registros simultâneaos
   salvar = () => {
     //TODO adicionar aqui o passo a passo para editar.
     this.localizacao?.id
