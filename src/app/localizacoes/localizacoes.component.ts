@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class LocalizacoesComponent implements OnDestroy {
   nomePesquisa?: string;
   filtroPesquisa?: string = "ativo";
+  entradaSaida: string = "entrada"
   listaLocalizacoes: Localizacao[] = []; 
   private mqttSubscription?: Subscription; // Crie uma Subscription para o evento do MQTT
 

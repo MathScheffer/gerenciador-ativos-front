@@ -2,16 +2,24 @@
   <h2>Localizações</h2>
 
   <div class="mb-3 row">
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <input type="string" [(ngModel)]="nomePesquisa" id="nomePesquisa" class="form-control" placeholder="Digite um {{filtroPesquisa}} para pesquisar...">
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <select class="form-select" [(ngModel)]="filtroPesquisa" name="campoPesquisa" id="campoPesquisa" aria-placeholder="selecione um filtro">
-        <option value="ativo" selected>Ativo</option>
-        <option value="local">Local</option>
-        <option value="ultima_localizacao">Última Localização</option>
+        <option value="ativo" selected>Nome do Ativo</option>
+        <option value="local">Nome do Local</option>
+        <option value="tag_ativo">Tag do Ativo</option>
+        <option value="tag_local">Tag do Local</option>
         <option value="data_entrada">Entrada</option>
         <option value="data_saida">Saída</option>
+      </select>
+    </div>
+        <div class="col-sm-3">
+      <select class="form-select" [(ngModel)]="entradaSaida" name="entradaSaida" id="entradaSaida" aria-placeholder="Entrada / Saída">
+        <option value="entrada" selected>Somente Entrada</option>
+        <option value="saida">Somente Saídas</option>
+        <option value="entradaSaida">Entradas e Saídas</option>
       </select>
     </div>
   </div>
@@ -31,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let localizacao of (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa )">
+        <tr *ngFor="let localizacao of (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa | filter: 'data_saida' : entradaSaida )">
           <td>{{localizacao.id}}</td>
           <td>{{localizacao.ativo}}</td>
           <td>{{localizacao.local}}</td>
