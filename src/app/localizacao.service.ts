@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Localizacao } from './localizacao';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { LocaisService } from './locais.service';
 import { GerenciadorService } from './gerenciador.service';
 import { Local } from './local';
 import { Ativos } from './ativos';
+import { LocalizacaoResultSet } from './localizacoes/LocalzacaoResultSet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalizacaoService   {
-  BASE_API = "http://localhost:3000/localizacoes"
+  BASE_API = "http://localhost:3000/api/localizacao"
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type":"application/json"
@@ -26,7 +27,7 @@ export class LocalizacaoService   {
    }
 
   listarLocalizacoes = () : Observable<Localizacao[]> => {
-    return  this.http.get<Localizacao[]>(`${this.BASE_API}`);
+    return  this.http.get<Localizacao[]>(`${this.BASE_API}`)
   }
 
   verificarRegistro = (tag_ativo: string, tag_local: string, fnCallback: any) => {

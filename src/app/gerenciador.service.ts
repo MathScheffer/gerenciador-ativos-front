@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Ativos } from './ativos';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { AtivosResultSet } from './ativos/AtivosResultset';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class GerenciadorService {
     }
   ]
 
-  BASE_API = "http://localhost:3000"
+  BASE_API = "http://localhost:3000/api"
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type":"application/json"
@@ -29,22 +30,22 @@ export class GerenciadorService {
   constructor(private http: HttpClient) { }
 
   listarAtivos(): Observable<Ativos[]>{
-    console.log(`${this.BASE_API}/ativos`)
-    return this.http.get<Ativos[]>(`${this.BASE_API}/ativos`);
+    console.log(`${this.BASE_API}/ativo`)
+    return this.http.get<Ativos[]>(`${this.BASE_API}/ativo`)
   }
 
   buscarPorId(id: number): Observable<Ativos> {
-    return this.http.get<Ativos>(`${this.BASE_API}/ativos/${id}`)
+    return this.http.get<Ativos>(`${this.BASE_API}/ativo/${id}`)
   }
   adicionarAtivo = (ativo: Ativos): Observable<Ativos> => {
-    return this.http.post<Ativos>(`${this.BASE_API}/ativos`, ativo, this.httpOptions)
+    return this.http.post<Ativos>(`${this.BASE_API}/ativo`, ativo, this.httpOptions)
   }
 
   editar = (id: number, ativo: Ativos): Observable<Ativos> => {
-    return this.http.put<Ativos>(`${this.BASE_API}/ativos/${id}`, ativo, this.httpOptions)
+    return this.http.put<Ativos>(`${this.BASE_API}/ativo/${id}`, ativo, this.httpOptions)
   }
 
   deletar = (id: number) : Observable<Ativos> => {
-    return this.http.delete<Ativos>(`${this.BASE_API}/ativos/${id}`, this.httpOptions)
+    return this.http.delete<Ativos>(`${this.BASE_API}/ativo/${id}`, this.httpOptions)
   }
 }

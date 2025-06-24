@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaAtivosComponent } from './lista-ativos/lista-ativos.component';
+import { ListaAtivosComponent } from './ativos/lista-ativos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { LocalizacoesComponent } from './localizacoes/localizacoes.component';
-import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
+import { ListaLocaisComponent } from './locais/lista-locais.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormAtivosComponent } from './form-ativos/form-ativos.component';
 import { FormLocalComponent } from './form-local/form-local.component';
