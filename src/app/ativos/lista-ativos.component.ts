@@ -31,8 +31,9 @@ export class ListaAtivosComponent {
     if(!this.authService.verificarLogin()){
       this.router.navigate(['/login'])
     }else{
+      console.log('deletando')
       this.gerenciadorService.deletar(id).subscribe( (ativo: Ativos) => {
-        alert(`Ativo ${ativo.nome} removido!`)
+        alert(`Ativo ${id} removido!`)
         this.listar()
       })
     }

@@ -29,11 +29,17 @@ export class ListaLocaisComponent {
     if(!this.authService.verificarLogin()){
       this.router.navigate(['/login'])
     }else{
-      this.locaisService.deletar(id).subscribe( (local: Local) => {
-        alert(`Local ${local.nome} deletado!`)
-  
-        this.listar()
-      })
+      console.log('deletando...')
+      try{
+        this.locaisService.deletar(id).subscribe( (locall: Local) => {
+          alert(`Local ${id} deletado!`)
+    
+          this.listar()
+        })
+      }
+      catch(err){
+        console.log(err)
+      }
     }
   } 
 }

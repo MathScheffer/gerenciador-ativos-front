@@ -34,7 +34,7 @@ export class LocaisService {
     return this.http.get<Local>(`${this.BASE_API}/${id}`, this.httpOptions)
   }
 
-  deletar(id: number): Observable<Local> {
+  deletar = (id: number): Observable<Local> => {
     return this.http.delete<Local>(`${this.BASE_API}/${id}`, this.httpOptions)
   }
 
