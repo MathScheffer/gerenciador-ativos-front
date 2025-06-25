@@ -18,7 +18,7 @@ export class GerenciadorMqttService implements OnDestroy{
 
 
   constructor(private mqttService: MqttService, private localizacaoService: LocalizacaoService){
-    this.subscription = this.mqttService.observe('localizacoes/persistir').subscribe( (message: IMqttMessage) => {
+    this.subscription = this.mqttService.observe('localizacoes/persistida').subscribe( (message: IMqttMessage) => {
       console.log('Mensagem para persistir recebida!')
       console.log(JSON.parse(message.payload.toString()))
       const tag_ativo = JSON.parse(message.payload.toString()).tag_ativo;
