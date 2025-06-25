@@ -3,13 +3,13 @@
     <h2 class="mb-4">Login</h2>
     <label class="form-label mb-4">
       Nome
-      <input [(ngModel)]="nome" name="nome" class="form-control" type="text" />
+      <input [(ngModel)]="usuario.nome" name="nome" class="form-control" type="text" />
     </label>
-    {{nome}}
+    {{usuario.nome}}
     <label class="form-label mb-4">
-      Senha
-      <input [(ngModel)]="senha" name="senha" class="form-control" type="password" />
-      {{senha}}
+      password
+      <input [(ngModel)]="usuario.password" name="password" class="form-control" type="password" />
+      {{usuario.password}}
     </label>
 
     <div class="mb-3 row justify-content-center">

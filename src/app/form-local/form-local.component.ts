@@ -22,6 +22,7 @@ export class FormLocalComponent {
       this.botaoAcao = "Editar"
       this.locaisService.buscarPorId(this.id).subscribe( (local: Local) => {
         this.local = local
+        console.log(local)
       })
     }
   }
@@ -32,7 +33,7 @@ export class FormLocalComponent {
       this.locaisService.buscarPorId(this.id).subscribe((local: Local) => {
         if(this.local.nome && this.id){
           this.locaisService.editar(this.id, this.local).subscribe( (local: Local) => {
-            alert(`Local ${local.id} editado !`)
+            alert(`Local ${this.local.id} editado !`)
             this.router.navigate(['locais'])
           })
         }else{

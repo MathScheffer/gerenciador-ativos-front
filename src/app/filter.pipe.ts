@@ -11,9 +11,9 @@ export class FilterPipe implements PipeTransform {
     if(chave === 'data_saida') {
       if(valor == 'entrada') {
         console.log(`Lista de entrada: ${JSON.stringify(lista)}`)
-        return lista.filter(obj => obj[chave] === null)
+        return lista.filter(obj => obj['data_saida'] === null)
       }else if(valor === 'saida'){
-        return lista.filter(obj => obj[chave] !== null)
+        return lista.filter(obj => obj['data_saida'] !== null)
       }else{
         return lista
       }

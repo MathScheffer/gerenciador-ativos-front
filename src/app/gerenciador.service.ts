@@ -35,8 +35,9 @@ export class GerenciadorService {
   }
 
   buscarPorId(id: number): Observable<Ativos> {
-    return this.http.get<Ativos>(`${this.BASE_API}/ativo/${id}`)
+    return this.http.get<Ativos>(`${this.BASE_API}/ativo/${id}`, this.httpOptions)
   }
+  
   adicionarAtivo = (ativo: Ativos): Observable<Ativos> => {
     return this.http.post<Ativos>(`${this.BASE_API}/ativo`, ativo, this.httpOptions)
   }

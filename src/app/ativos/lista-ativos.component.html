@@ -19,7 +19,7 @@
           <td>{{ativo.id}}</td>
           <td>{{ativo.nome}}</td>
           <td>{{ativo.tag_ativo}}</td>
-          <td class="text-center"><a class="btn btn-primary" routerLink="edit/{{ativo.id}}">Editar</a></td>
+          <td class="text-center"><a class="btn btn-primary" routerLink="/ativos/edit/{{ativo.id}}">Editar</a></td>
           <td class="text-center"><a class="btn btn-danger" routerLink="/ativos" (click)="deletar(ativo.id)"> Deletar</a></td>
         </tr>
       </tbody>

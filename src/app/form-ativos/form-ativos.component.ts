@@ -26,6 +26,7 @@ export class FormAtivosComponent {
 
       this.http.buscarPorId(this.id).subscribe( (ativo: Ativos) => {
         this.ativo = ativo
+        console.log(ativo)
       })
     }
   }

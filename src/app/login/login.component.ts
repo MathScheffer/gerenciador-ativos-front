@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthGuardService } from '../auth-guard.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,16 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  nome: string = "";
-  senha: string = "";
+/*   nome: string = "";
+  password: string = ""; */
+  usuario: Usuario = new Usuario()
   constructor(private auth: AuthGuardService, private router: Router){}
   logar = () => {
-    this.auth.login(this.nome, this.senha).subscribe( isLogado => {
+    this.auth.login(this.usuario).subscribe( isLogado => {
       if(isLogado){
         this.router.navigate(['/localizacoes'])
       }else{
-        alert('Usuario ou senha não encontrados.')
+        alert('Usuario ou password não encontrados.')
       }
     })
   }
