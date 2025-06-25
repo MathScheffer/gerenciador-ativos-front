@@ -8,15 +8,12 @@ import { Ativos } from './ativos';
 export class FilterPipe implements PipeTransform {
 
   transform(lista: any[] ,chave: string | undefined  ,valor: string | undefined | null): any[] {
-    console.log(`valor: ${valor} chave: ${chave}`)
-    console.log(!valor || !chave || valor?.length < 3)
-
     if(chave === 'data_saida') {
       if(valor == 'entrada') {
-        console.log(lista)
-        return lista.filter(obj => obj[chave] === undefined)
+        console.log(`Lista de entrada: ${JSON.stringify(lista)}`)
+        return lista.filter(obj => obj[chave] === null)
       }else if(valor === 'saida'){
-        return lista.filter(obj => obj[chave] !== undefined)
+        return lista.filter(obj => obj[chave] !== null)
       }else{
         return lista
       }

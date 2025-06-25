@@ -20,7 +20,7 @@ export class GerenciadorMqttService implements OnDestroy{
   constructor(private mqttService: MqttService, private localizacaoService: LocalizacaoService){
     this.subscription = this.mqttService.observe('localizacoes/persistida').subscribe( (message: IMqttMessage) => {
       console.log('Mensagem para persistir recebida!')
-      console.log(JSON.parse(message.payload.toString()))
+/*       console.log(JSON.parse(message.payload.toString()))
       const tag_ativo = JSON.parse(message.payload.toString()).tag_ativo;
       const tag_local = JSON.parse(message.payload.toString()).tag_local;
       console.log(JSON.parse(message.payload.toString()).tag_local)
@@ -48,7 +48,7 @@ export class GerenciadorMqttService implements OnDestroy{
                   this.localizacaoService.postLocalizacao(this.localizacao).subscribe(localizacao => {
                     this.localizacao = new Localizacao();
                       // Emita um valor através do Subject para notificar os ouvintes
-                    this._localizacaoPersistida.next();
+                    
                   })
               }else{
                 if (!ativo){
@@ -59,9 +59,9 @@ export class GerenciadorMqttService implements OnDestroy{
               }
         })
       }
+      this.mensagensParaPersistir.push(message.payload.toString()) */
 
-      
-      this.mensagensParaPersistir.push(message.payload.toString())
+      this._localizacaoPersistida.next();
     })
   }
 
