@@ -3,17 +3,14 @@ import { Local } from './local';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthGuardService } from './auth-guard.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocaisService {
-  private locais: Local[] = [
-    {id: "1", nome: "Recepção", tag_local: "local1"},
-    {id: "2", nome: "UTI 1", tag_local: "local2"},
-    {id: "3", nome: "UTI 2",tag_local: "local3"}
-  ]
-  BASE_API = "http://localhost:3000/api/local"
+
+  BASE_API = `${environment.BASE_URL}/local`
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type":"application/json"

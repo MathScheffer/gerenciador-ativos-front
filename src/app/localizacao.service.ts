@@ -7,12 +7,12 @@ import { GerenciadorService } from './gerenciador.service';
 import { Local } from './local';
 import { Ativos } from './ativos';
 import { LocalizacaoResultSet } from './localizacoes/LocalzacaoResultSet';
-
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class LocalizacaoService   {
-  BASE_API = "http://localhost:3000/api/localizacao"
+  BASE_API = `${environment.BASE_URL}/localizacao`
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type":"application/json"

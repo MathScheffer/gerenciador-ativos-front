@@ -3,12 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from './usuario';
-const BASE_API = "http://localhost:3000/usuario"
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
-}
 
 @Injectable({
   providedIn: 'root'

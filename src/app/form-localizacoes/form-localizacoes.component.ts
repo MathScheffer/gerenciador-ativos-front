@@ -22,63 +22,15 @@ export class FormLocalizacoesComponent {
       this.titulo = this.route.snapshot.title
   }
 
-  //TODO: verificar o por quê da entrada não está sendo acionada quando há 2 registros simultâneos
   salvar = () => {
-    //TODO adicionar aqui o passo a passo para editar.
-    this.localizacao?.id
-      if(this.localizacao?.tag_ativo && this.localizacao.tag_local){
+      if(this.localizacao?.tag_ativo && this.localizacao.tag_local){ 
         this.localizacoesService.listarLocalizacoes().subscribe( (localizacoes: Localizacao[]) => {
           this.localizacao.id = Date.now().toString();
-          
-          this.localizacoesService.verificarRegistro(this.localizacao.tag_ativo,this.localizacao.tag_local, (ativo: Ativos, local: Local, registrosIdenticos: Localizacao[], registrosEntradasAtivos: Localizacao[]) => {
-              if(ativo && local){
-                if(this.titulo?.includes("saida")){
-                   this.localizacao.data_saida = new Date()
+          this.localizacao.data_entrada = new Date()
 
-                   if(registrosIdenticos.length == 0){
-                    console.error(`Registro da localização não encontrado!`)
-                    return;
-                   }
-                   let registroSemSaidaMarcada = registrosIdenticos.find( (l: Localizacao) =>  !l.data_saida )
-                   
-                   if(!registroSemSaidaMarcada) {
-                    console.error("Todos os registros desta localização estão com saída já registrada!")
-                    alert(`Saida desta localizacação já está marcada!`)
-                    return;
-                   }
-
-                   registroSemSaidaMarcada.data_saida = this.localizacao.data_saida
-                   this.localizacoesService.editarLocalizacao(parseInt(registroSemSaidaMarcada.id), registroSemSaidaMarcada)
-                   .subscribe(localizacao => {
-                      this.localizacao = new Localizacao();
-                      this.router.navigate(['/localizacoes'])
-                   })
-                   return;
-                }
-
-                if(this.titulo?.includes("entrada")){
-                   this.localizacao.data_entrada = new Date()
-                  //o arduino mandou mais um sinal. Se houver um registro da mesma combinação, preciso apontar uma saída nos registros velhos.
-                  if (registrosEntradasAtivos)  this.localizacoesService.corrigirSaidas(registrosEntradasAtivos, this.localizacao.data_entrada);
-                  //Aqui eu corrijo que uma saída em todos os locais que o ativo passou anteriormente
-                  if (registrosIdenticos){
-                     this.localizacoesService.corrigirSaidas(registrosIdenticos, this.localizacao.data_entrada )
-                  }
-                  
-                  this.localizacao.ativo = ativo.nome
-                  this.localizacao.local = local.nome
-                  this.localizacoesService.postLocalizacao(this.localizacao).subscribe(localizacao => {
-                    this.localizacao = new Localizacao();
-                    this.router.navigate(['/localizacoes'])
-                  })
-                }
-              }else{
-                if (!ativo){
-                  alert("Tag do ativo não foi encontrada!")
-                }else if(!local){
-                  alert("Tag do local não foi encontrada!")
-                }
-              }
+          this.localizacoesService.postLocalizacao(this.localizacao).subscribe(localizacao => {
+              this.localizacao = new Localizacao();
+              this.router.navigate(['/localizacoes'])
           })
         })
       }
