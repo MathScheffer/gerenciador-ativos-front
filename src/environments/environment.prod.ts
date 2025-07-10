@@ -1,5 +1,4 @@
 export const environment = {
-  production: false,
+  production: true,
   BASE_URL: 'https://gerenciador-ativos-back.onrender.com/api',
-  someFeatureFlag: true
 };
