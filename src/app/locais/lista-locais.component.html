@@ -25,4 +25,9 @@
       </tbody>
     </table>
   </div>
+  <div *ngIf="false">
+    {{ (listaLocais | filter: 'nome': nomePesquisa)}}
+  </div>
+
+  <p>Total de linhas: <strong>{{ (listaLocais | filter: 'nome': nomePesquisa)?.length || 0 }}</strong></p>
 </section>
