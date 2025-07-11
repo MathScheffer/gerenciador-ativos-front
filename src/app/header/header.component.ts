@@ -35,6 +35,7 @@ export class HeaderComponent {
 
   deslogar = () => {
     this.auth.logout()
+    
     this.isAuth = false
     this.router.navigate(['/localizacoes'])
   }
