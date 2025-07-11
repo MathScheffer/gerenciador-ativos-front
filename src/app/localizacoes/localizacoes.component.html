@@ -23,7 +23,6 @@
       </select>
     </div>
   </div>
-  <p>{{nomePesquisa}}</p>
   <div class="table-container">
     <table class="table table-striped">
       <thead>
@@ -43,9 +42,9 @@
           <td>{{localizacao.id}}</td>
           <td>{{localizacao.Ativo.nome}}</td>
           <td>{{localizacao.Local.nome}}</td>
-          <td>{{localizacao.data_entrada | date: "dd/MM/YYYY : HH:mm:ss"}}</td>
+          <td>{{localizacao.data_entrada | date: "dd/MM/yyyy : HH:mm:ss"}}</td>
           <td>{{localizacao.ultima_localizacao}}</td>
-          <td>{{localizacao.data_saida | date: "dd/MM/YYYY : HH:mm:ss"}}</td>
+          <td>{{localizacao.data_saida | date: "dd/MM/yyyy : HH:mm:ss"}}</td>
           <td>{{localizacao.tag_local}}</td>
           <td>{{localizacao.tag_ativo}}</td>
         </tr>

@@ -21,6 +21,8 @@ import { AppContainerComponent } from './app-container/app-container.component';
 import { FormLocalizacoesComponent } from './form-localizacoes/form-localizacoes.component';
 import { TesteMqttComponent } from './teste-mqtt/teste-mqtt.component';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 
   export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -61,7 +63,7 @@ import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [provideHttpClient(), AuthGuard],
+  providers: [provideHttpClient(), AuthGuard, provideFirebaseApp(() => initializeApp({ projectId: "cadastro-produtos-1b58d", appId: "1:288766774495:web:a344acd57947034a21ed6a", storageBucket: "cadastro-produtos-1b58d.firebasestorage.app", apiKey: "AIzaSyBYwpRMQvnnQQt2tdDeHepavHr6KnGIHis", authDomain: "cadastro-produtos-1b58d.firebaseapp.com", messagingSenderId: "288766774495", measurementId: "G-P7D8MJ8FYC" })), provideAuth(() => getAuth())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

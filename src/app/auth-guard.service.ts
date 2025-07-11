@@ -25,16 +25,6 @@ export class AuthGuardService {
         }
       })
     )
-/*     return this.http.get<any>(BASE_API).pipe(
-      tap( (resp: any) => {
-        if(resp.usuario && resp.usuario == usuario && resp.senha && resp.senha == senha){
-          sessionStorage.setItem('TOKEN','logado')
-          return true
-        }else{
-          return false;
-        }
-      })
-    ) */
   }
 
   verificarLogin(): boolean{
