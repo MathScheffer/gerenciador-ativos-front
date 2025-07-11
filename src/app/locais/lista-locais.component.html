@@ -27,6 +27,10 @@
   <div *ngIf="false">
     {{ (listaLocais | filter: 'nome': nomePesquisa)}}
   </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <p>Total de linhas: <strong>{{ (listaLocais | filter: 'nome': nomePesquisa)?.length || 0 }}</strong></p>
+    </div>
+  </div>
 
-  <p>Total de linhas: <strong>{{ (listaLocais | filter: 'nome': nomePesquisa)?.length || 0 }}</strong></p>
 </section>

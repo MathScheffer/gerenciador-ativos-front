@@ -27,6 +27,9 @@
   <div *ngIf="false">
     {{ (listaAtivos | filter: 'nome': nomePesquisa)}}
   </div>
-
-  <p>Total de linhas: <strong>{{ (listaAtivos | filter: 'nome': nomePesquisa)?.length || 0 }}</strong></p>
+  <div class="row mt-5">
+    <div class="col-12">
+      <p>Total de linhas: <strong>{{ (listaAtivos | filter: 'nome': nomePesquisa)?.length || 0 }}</strong></p>
+    </div>
+  </div>
 </section>

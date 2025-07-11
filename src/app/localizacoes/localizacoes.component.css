@@ -1,9 +1,3 @@
-@media (max-width: 576px) {
-  #nomePesquisa {
-    margin-bottom: .5rem !important;;
-  }
-}
-
 .table-wrapper {
   overflow-x: auto; /* Permite rolar horizontalmente se a tabela for maior que o wrapper */
   /* display: flex;  Se você quiser que o wrapper se ajuste ao conteúdo da tabela e a tabela não encolha */
@@ -34,3 +28,28 @@ table {
 .table-container {
   max-height: 60vh;
 }
+
+.update-col{
+  text-align: end;
+}
+
+@media (max-width: 576px) {
+  .table-container {
+    max-height: 45vh;
+  }
+
+  #nomePesquisa {
+    margin-bottom: .5rem !important;;
+  }
+}
+
+img{
+  width: 40px;
+  height: 40px;
+}
+
+p {
+  margin: 0;
+}
+
+
