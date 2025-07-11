@@ -15,6 +15,13 @@ div.container{
         flex-direction: column;
     }
 }
+img{
+  max-width: 30px;
+  max-height: 30px;
+}
+img:hover{
+  cursor: pointer;
+}
 
 @media (min-width: 992px) {
   .nav-item{

@@ -12,14 +12,16 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth-guard.guard';
 import { FormLocalizacoesComponent } from './form-localizacoes/form-localizacoes.component';
 import { TesteMqttComponent } from './teste-mqtt/teste-mqtt.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
+const redirectUnAuth = () => redirectUnauthorizedTo(['login'])
 const routes: Routes = [
   {path:'teste', component:TesteMqttComponent},
   {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
-  {path:'ativos', component:ListaAtivosComponent},
+  {path:'ativos', component:ListaAtivosComponent, ...canActivate(redirectUnAuth)},
   {path: 'ativos/edit/:id', component: FormAtivosComponent, title: 'Editar ativos', canActivate: [AuthGuard]},
-  {path: 'locais', component: ListaLocaisComponent},
+  {path: 'locais', component: ListaLocaisComponent, ...canActivate(redirectUnAuth)},
   {path: 'locais/edit/:id', component: FormLocalComponent, title: 'Editar Local', canActivate: [AuthGuard]},
   {path:'localizacoes', component: LocalizacoesComponent},
   {path:'cadastro', component: CadastroComponent, title: 'cadastro', children:[
