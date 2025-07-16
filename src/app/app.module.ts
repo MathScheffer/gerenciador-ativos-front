@@ -23,6 +23,7 @@ import { TesteMqttComponent } from './teste-mqtt/teste-mqtt.component';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { ErrorComponent } from './error/error.component';
 
 
   export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -54,7 +55,8 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     LoginComponent,
     AppContainerComponent,
     FormLocalizacoesComponent,
-    TesteMqttComponent
+    TesteMqttComponent,
+    ErrorComponent
   ],
   imports: [
      MqttModule.forRoot(MQTT_SERVICE_OPTIONS),

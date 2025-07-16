@@ -15,13 +15,14 @@ export class LocalizacoesComponent implements OnDestroy {
   filtroPesquisa?: string = "ativo";
   entradaSaida: string = "entrada"
   listaLocalizacoes: Localizacao[] = []; 
-  private mqttSubscription?: Subscription; // Crie uma Subscription para o evento do MQTT
+  private mqttSubscription?: Subscription;
 
   constructor(private localizacoesService: LocalizacaoService, private gerenciadorMqtt: GerenciadorMqttService){
     this.mqttSubscription = this.gerenciadorMqtt.localizacaoPersistida$.subscribe(() => {
       console.log('Evento de localização persistida recebido no componente. Listando novamente...');
       this.listar();
     });
+    
     this.listar()
   }
 
@@ -33,5 +34,9 @@ export class LocalizacoesComponent implements OnDestroy {
     ngOnDestroy(): void {
     // Certifique-se de cancelar a inscrição quando o componente for destruído
     this.mqttSubscription?.unsubscribe();
+  }
+
+  sendTableToSupabse = () => {
+
   }
 }

@@ -10,63 +10,34 @@ import { Local } from './local';
   providedIn: 'root'
 })
 export class GerenciadorMqttService implements OnDestroy{
-  subscription?: Subscription
+  localizacoesPersistidasSubscription?: Subscription
+  errosSubscription?: Subscription
+
   mensagensParaPersistir: string[] = [];
   localizacao: Localizacao = new Localizacao();
+
   private _localizacaoPersistida = new Subject<void>();
-  localizacaoPersistida$ = this._localizacaoPersistida.asObservable(); // Exponha como um Observable
+  localizacaoPersistida$ = this._localizacaoPersistida.asObservable(); 
 
+  private __erros = new Subject<IMqttMessage>();
+  locaizacaoErros$ = this.__erros.asObservable();
 
-  constructor(private mqttService: MqttService, private localizacaoService: LocalizacaoService){
-    this.subscription = this.mqttService.observe('localizacoes/persistida').subscribe( (message: IMqttMessage) => {
+  constructor(private mqttService: MqttService){
+    this.localizacoesPersistidasSubscription = this.mqttService.observe('localizacoes/persistida').subscribe( (message: IMqttMessage) => {
       console.log('Mensagem para persistir recebida!')
-/*       console.log(JSON.parse(message.payload.toString()))
-      const tag_ativo = JSON.parse(message.payload.toString()).tag_ativo;
-      const tag_local = JSON.parse(message.payload.toString()).tag_local;
-      console.log(JSON.parse(message.payload.toString()).tag_local)
-      if(tag_ativo && tag_local){
-        //TODO verificar o que está acontecendo na saida
-        localizacaoService.verificarRegistro(tag_ativo, tag_local, (ativo: Ativos, local: Local, registrosIdenticos: Localizacao[], registrosEntradasAtivos: Localizacao[]) => {
-            if(ativo && local){
-                  this.localizacao.data_entrada = new Date()
-                  //o arduino mandou mais um sinal. Se houver um registro da mesma combinação, preciso apontar uma saída nos registros velhos.
-                  if (registrosEntradasAtivos)  {
-                    console.log(registrosEntradasAtivos)
-                    this.localizacaoService.corrigirSaidas(registrosEntradasAtivos, this.localizacao.data_entrada)
-                  };
-                  //Aqui eu corrijo que uma saída em todos os locais que o ativo passou anteriormente
-                  if (registrosIdenticos){
-                     this.localizacaoService.corrigirSaidas(registrosIdenticos, this.localizacao.data_entrada )
-                  }
-                  
-                  this.localizacao.ativo = ativo.nome
-                  this.localizacao.local = local.nome
-                  this.localizacao.tag_ativo = tag_ativo
-                  this.localizacao.tag_local = tag_local
-                  this.localizacao.id = Date.now().toString()
-                  console.log(`Adicionando via mqtt: ${JSON.stringify(this.localizacao)}`)
-                  this.localizacaoService.postLocalizacao(this.localizacao).subscribe(localizacao => {
-                    this.localizacao = new Localizacao();
-                      // Emita um valor através do Subject para notificar os ouvintes
-                    
-                  })
-              }else{
-                if (!ativo){
-                  alert("Tag do ativo não foi encontrada!")
-                }else if(!local){
-                  alert("Tag do local não foi encontrada!")
-                }
-              }
-        })
-      }
-      this.mensagensParaPersistir.push(message.payload.toString()) */
 
       this._localizacaoPersistida.next();
+    })
+
+    this.errosSubscription = this.mqttService.observe('localizacoes/erros').subscribe( (message: IMqttMessage) => {
+      console.log('Erro identificado!')
+      
+      this.__erros.next(message);
     })
   }
 
     ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.localizacoesPersistidasSubscription?.unsubscribe();
      this._localizacaoPersistida.complete(); // Não esqueça de completar o Subject
   }
 }
