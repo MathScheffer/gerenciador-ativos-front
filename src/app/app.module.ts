@@ -24,6 +24,7 @@ import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ErrorComponent } from './error/error.component';
+import { ValidarEmailPipe } from './validar-email.pipe';
 
 
   export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -56,7 +57,8 @@ import { ErrorComponent } from './error/error.component';
     AppContainerComponent,
     FormLocalizacoesComponent,
     TesteMqttComponent,
-    ErrorComponent
+    ErrorComponent,
+    ValidarEmailPipe
   ],
   imports: [
      MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
