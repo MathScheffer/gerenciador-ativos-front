@@ -61,7 +61,7 @@
       <p>Total de linhas: <strong>{{ (listaLocalizacoes | filter: filtroPesquisa: nomePesquisa | filter: 'data_saida' : entradaSaida)?.length || 0 }}</strong></p>
     </div>
     <div class="col-6 update-col">
-      <img src="https://ogrfmpvyjnybliwzlqsl.supabase.co/storage/v1/object/public/images//upload-de-arquivo.png" alt="upload do log atual para o supbase">
+      <img (click)="edge()" src="https://ogrfmpvyjnybliwzlqsl.supabase.co/storage/v1/object/public/images//upload-de-arquivo.png" alt="upload do log atual para o supbase">
     </div>
   </div>
 

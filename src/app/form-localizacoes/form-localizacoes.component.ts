@@ -37,23 +37,4 @@ export class FormLocalizacoesComponent {
   }
 
   inicio = () => {}
-
-/*   corrigirSaidas = (localizacoes: Localizacao[], data: Date) => {
-    localizacoes
-      localizacoes.forEach(l => {
-        if(!l.data_saida){
-          l.data_saida = data
-           this.localizacoesService.editarLocalizacao(parseInt(l.id), l).subscribe(l => {
-        console.log(`Localizacao ${l.id} editada!`)
-      }) 
-        }
-        
-      })
-    }
-
-    registrarSaida = async(id: number, localizacao: Localizacao) => {
-      this.localizacoesService.editarLocalizacao(id, localizacao).subscribe(l => {
-        console.log(`Localizacao ${l.id} editada!`)
-      }) 
-    } */
 }

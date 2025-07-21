@@ -3,6 +3,7 @@ import { LocalizacaoService } from '../localizacao.service';
 import { Localizacao } from '../localizacao';
 import { GerenciadorMqttService } from '../gerenciador-mqtt.service';
 import { Subscription } from 'rxjs';
+import { SupabaseStorageService } from '../supabase-storage.service';
 
 @Component({
   selector: 'app-localizacoes',
@@ -17,8 +18,8 @@ export class LocalizacoesComponent implements OnDestroy {
   listaLocalizacoes: Localizacao[] = []; 
   private mqttSubscription?: Subscription;
 
-  constructor(private localizacoesService: LocalizacaoService, private gerenciadorMqtt: GerenciadorMqttService){
-    this.mqttSubscription = this.gerenciadorMqtt.localizacaoPersistida$.subscribe(() => {
+  constructor(private localizacoesService: LocalizacaoService, private gerenciadorMqtt: GerenciadorMqttService, private supabaseService: SupabaseStorageService){
+    this.mqttSubscription = this.gerenciadorMqtt.subscribeTopic('localizacoes/persistida').subscribe(() => {
       console.log('Evento de localização persistida recebido no componente. Listando novamente...');
       this.listar();
     });
@@ -32,11 +33,19 @@ export class LocalizacoesComponent implements OnDestroy {
     });
   }
     ngOnDestroy(): void {
-    // Certifique-se de cancelar a inscrição quando o componente for destruído
+      console.log('destroyinh...')
     this.mqttSubscription?.unsubscribe();
   }
 
-  sendTableToSupabse = () => {
+  edge = () => {
+    this.supabaseService.edge()
+    .then(msg => {
+      console.log(msg)
+    })
+    .catch(err => {
+      console.log(err)
+      alert(err)
+    })
 
   }
 }

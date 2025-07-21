@@ -13,9 +13,8 @@ export class ErrorComponent {
   private mqttSubscription?: Subscription
   setError: number = 0;
   constructor(private mqttService: GerenciadorMqttService){
-    this.mqttSubscription = this.mqttService.locaizacaoErros$.subscribe((message: IMqttMessage) => {
+    this.mqttSubscription = this.mqttService.subscribeTopic('localizacoes/erros').subscribe((message: IMqttMessage) => {
       const decodeURI = new TextDecoder('utf-8')
-
       const decoded = decodeURI.decode(message.payload)
       
       alert(JSON.parse(JSON.stringify(decoded)))
